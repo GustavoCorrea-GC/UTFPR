@@ -325,7 +325,7 @@ void imprimir(Grafo *G){
                 if(aux2==aux)
                     printf("|(%c)|\t->", (char)aux2->chave);
                 else
-                printf("|(%c)|P%d|->", (char)aux2->chave, aux2->peso);
+                printf("|(%c)|P=%d|->", (char)aux2->chave, aux2->peso);
                 aux2=aux2->aresta;
             }
             printf ("NULL\n");

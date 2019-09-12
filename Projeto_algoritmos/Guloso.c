@@ -10,22 +10,22 @@
 
 #define Num_City 29
 
-/*int CalculaDist(float x1,float y1,float x2,float y2){
-    double xd,yd;
-    int dij;
-    xd = x1 - x2;
-    yd = y1 - y2;
-    dij = nint( sqrt( xd*xd + yd*yd) );
-    return dij;
-}*/
 int CalculaDist(float x1,float y1,float x2,float y2){
     double xd,yd;
     int dij;
     xd = x1 - x2;
     yd = y1 - y2;
+    dij = rint( sqrt( xd*xd + yd*yd) );
+    return dij;
+}/*
+int CalculaDist(float x1,float y1,float x2,float y2){
+    double xd,yd;
+    int dij;
+    xd = x1 - x2;   
+    yd = y1 - y2;
     dij = nearbyint( sqrt( xd*xd + yd*yd) );
     return dij;
-}
+}*/
 
 
 void inserirTudo(Grafo *G, int M[][MAXI],float d[][2]){
@@ -36,7 +36,9 @@ void inserirTudo(Grafo *G, int M[][MAXI],float d[][2]){
     for (i=0;i<Num_City;i++){
         for(j=0;j<Num_City;j++){
             if(j!=i){
-                inserir_aresta(G, (int)'A',(int)'B',CalculaDist(d[i][0],d[i][1],d[j][0],d[j][1]),M);
+                if(i>j){
+                    inserir_aresta(G, (int)'A'+i,(int)'A'+j,CalculaDist(d[i][0],d[i][1],d[j][0],d[j][1]),M);
+                }
             }
         }
     }
