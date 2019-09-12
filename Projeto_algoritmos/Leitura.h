@@ -1,4 +1,6 @@
-
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /*float CalcDistancia( char *vetor ){
     xd = x[i] - x[j];

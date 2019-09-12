@@ -1,7 +1,7 @@
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+
 
 #define MAXI 30
 //structs de listas
