@@ -1078,29 +1078,32 @@ void Prim(Grafo *G, int u){
 
 #define Num_City 29
 
-int AchaMenor(Grafo *G,no *p, int *valor){
-    no *k = p;
-        while(k->aresta!=NULL){
-            if (k->peso<*valor){
-                *valor=k->peso;
-                //cap=k->chave;
-            }
-            k=k->aresta;
-        }
-        return k->chave;
-}
+
 void inicialista(lista *l){
     int i=0;
     while(i<Num_City){
         insere_lista(l,(int)'A'+i,0,0,0,0,0);
     }
 }
-
+void AchaMenor(no *p,no *q){
+    no *k = p;
+    int valor=p->peso;
+        while(k->aresta!=NULL){
+            if (k->peso<valor){
+                 q=k;
+                //cap=k->chave;
+            }
+            k=k->aresta;
+        }
+       
+        //return k->chave;
+}
 int Guloso (Grafo *G, char inicio){
     int valor;
     int distancia=0;
     int cap;
     no *q;
+    no *s;
     q=G->inicio;
     printf("Eai?");
     while (q->chave!=(int)inicio){
@@ -1119,11 +1122,11 @@ int Guloso (Grafo *G, char inicio){
     
     printf("%d",l.quant);
     while(l.quant!=0){
-        cap=AchaMenor(G, q, &valor);
-        remove_lista(&l,cap);
-        distancia+=valor;
-        insere_lista(&caminho,cap,0,0,0,0,0);
-        
+        AchaMenor(q,s);
+        remove_lista(&l,s->chave);
+        distancia+=s->peso;
+        insere_lista(&caminho,s->chave,0,0,0,0,0);
+        q=s;
     }
     r=caminho.inicio;
     printf("Distancia percorida:%d\n", distancia);

@@ -25,11 +25,13 @@ definir(&Simples);
 inserirTudo(&Simples,M,Cidades);
 printf("saiu?");
 
-//Ordena(&Simples);
-imprimir(&Simples);
+Ordena(&Simples);
+//imprimir(&Simples);
 printf("entrou Guloso\n");
 //imprimir(&Simples);
 
 Guloso(&Simples,'A');
+
+printf("saiu do guloso\n");
 return 0;
 }
