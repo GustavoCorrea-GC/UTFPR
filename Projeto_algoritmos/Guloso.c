@@ -8,41 +8,6 @@
 #include "Leitura.h"
 #include "Grafo.h"
 
-#define Num_City 29
-
-int CalculaDist(float x1,float y1,float x2,float y2){
-    double xd,yd;
-    int dij;
-    xd = x1 - x2;
-    yd = y1 - y2;
-    dij = rint( sqrt( xd*xd + yd*yd) );
-    return dij;
-}/*
-int CalculaDist(float x1,float y1,float x2,float y2){
-    double xd,yd;
-    int dij;
-    xd = x1 - x2;   
-    yd = y1 - y2;
-    dij = nearbyint( sqrt( xd*xd + yd*yd) );
-    return dij;
-}*/
-
-
-void inserirTudo(Grafo *G, int M[][MAXI],float d[][2]){
-    int i,j;
-    for (i=0;i<Num_City;i++){
-        inserir_vertice(G, (int)'A'+i,M);
-    }
-    for (i=0;i<Num_City;i++){
-        for(j=0;j<Num_City;j++){
-            if(j!=i){
-                if(i>j){
-                    inserir_aresta(G, (int)'A'+i,(int)'A'+j,CalculaDist(d[i][0],d[i][1],d[j][0],d[j][1]),M);
-                }
-            }
-        }
-    }
-}
 
 
 int main (){
@@ -58,9 +23,13 @@ definir(&Simples);
 
 //Menu(&Simples);/*
 inserirTudo(&Simples,M,Cidades);
+printf("saiu?");
 
-
-Ordena(&Simples);
+//Ordena(&Simples);
 imprimir(&Simples);
+printf("entrou Guloso\n");
+//imprimir(&Simples);
+
+Guloso(&Simples,'A');
 return 0;
 }
